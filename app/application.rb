@@ -1,10 +1,11 @@
 class Application
   def call(env)
     resp = Rack::Response.new
-    time = Time.new()
-    time_dif = (time - 1200)
-    resp.write "time now is : #{time}"
-    resp.write "time difference is #{time_dif}"
+    if Time.now.hour < 12
+      puts "Good Morning!"
+    else
+      puts "Good Afternoon!"
+    end
     resp.finish
   end
 end
